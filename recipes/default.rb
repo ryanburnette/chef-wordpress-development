@@ -1,5 +1,5 @@
-plugins = data_bag_item("chef-wordpress-development", "plugins")["plugins"]
-symlinks = data_bag_item("chef-wordpress-development", "symlinks")["symlinks"]
+plugins = data_bag_item("chef-wordpress-development", "default")["plugins"]
+symlinks = data_bag_item("chef-wordpress-development", "default")["symlinks"]
 
 bash "create mysql user and database" do
   code <<-EOF
@@ -69,17 +69,25 @@ bash "set permissions" do
   user "root"
 end
 
-bash "remove nginx default" do
+template "/etc/nginx/sites-available/development" do
+  source "nginx-development.erb"
+  mode 0644
+  owner "root"
+  group "root"
+  variables({
+    :production_url => data_bag_item("chef-wordpress-development", "default")["production_url"]
+  })
+end
+
+bash "enable nginx site" do
   code <<-EOF
     rm /etc/nginx/sites-enabled/default
+    ln -sf /etc/nginx/sites-available/development /etc/nginx/sites-enabled/development
   EOF
   user "root"
 end
 
-template "/etc/nginx/sites-enabled/development" do
-  source "development.erb"
-  mode 0644
-  owner "root"
-  group "root"
+service "nginx" do
+  action :restart
 end
 

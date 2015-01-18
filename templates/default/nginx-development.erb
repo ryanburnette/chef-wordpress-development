@@ -19,7 +19,7 @@ server {
   }
 
   location @missing {
-    rewrite "^/wp-content/uploads/(.*)$" http://production/wp-content/uploads/$1 redirect;
+    rewrite "^/wp-content/uploads/(.*)$" <%= @production_wordpress %>/wp-content/uploads/$1 redirect;
   }
 
   location ~ \.php$ {
