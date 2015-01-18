@@ -1,5 +1,6 @@
 plugins = data_bag_item("chef-wordpress-development", "default")["plugins"]
 symlinks = data_bag_item("chef-wordpress-development", "default")["symlinks"]
+production_url = data_bag_item("chef-wordpress-development", "default")["production_url"]
 
 bash "create mysql user and database" do
   code <<-EOF
@@ -75,7 +76,7 @@ template "/etc/nginx/sites-available/development" do
   owner "root"
   group "root"
   variables({
-    :production_url => data_bag_item("chef-wordpress-development", "default")["production_url"]
+    :production_url => production_url
   })
 end
 
