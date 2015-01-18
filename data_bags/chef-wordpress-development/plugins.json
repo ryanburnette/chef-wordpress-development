@@ -1,0 +1,7 @@
+{
+  "id": "plugins",
+  "plugins": [
+    "advanced-custom-fields",
+    "yoast-seo"
+  ]
+}

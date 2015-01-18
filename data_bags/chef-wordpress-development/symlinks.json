@@ -1,0 +1,7 @@
+{
+  "id": "symlinks",
+  "symlinks": [
+    "/home/vagrant/project/wordpress/wp-content/themes/project#/srv/development/wp-content/themes/project",
+    "/home/vagrant/project/assets#/srv/development/assets"
+  ]
+}
