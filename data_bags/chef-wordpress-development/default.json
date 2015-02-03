@@ -5,8 +5,9 @@
     "/home/vagrant/project/assets#/srv/development/assets"
   ],
   "plugins": [
-    "advanced-custom-fields",
-    "yoast-seo"
+    "wordpress-seo",
+    "wp-markdown",
+    "wp-pagenavi"
   ],
   "production_url": "http://production-site.com"
 }
