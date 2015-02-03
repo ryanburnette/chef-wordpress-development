@@ -1,41 +1,42 @@
-# chef-wordpress-development
+# wordpress-development
 
-This cookbook is meant to provision a [Vagrant][1] instance for local development
-on a custom WordPress theme.
+This is my cookbook for provisioning a Vagrant instance for developing in
+WordPress. It handles tasks that match my particular development pattern, but
+with a few tweaks it might handle yours too. Feel free to fork and use it as a
+basis for your own WordPress development.
 
-## Requirements
+The goal is to be able to run `vagrant up` in the root of a WordPress project
+and have an environment that's pretty much ready to go.
 
-* mysql-server
-* php5-fpm
-* php5-mysql
-* php5-cli
-* nginx
+## Usage
 
-## Automation
-
-... need to document what this recipe is actually doing
-
-## Recipes
-
-### `default`
-
-The default recipe does it all.
+The default recipe contains all the automation. It need only be added to the run
+list.
 
 ```
-recipe[chef-wordpress-development]
+recipe[wordpress-development]
 ```
 
 ## Data Bags
 
-### `default`
+Some of the required information must be set in the default data bag.
 
 ```json
 {
   "id": "default",
-  "symlinks": [],
-  "plugins": [],
-  "production_url": ""
+  "symlinks": [
+    "/home/vagrant/project/wordpress/wp-content/themes/project#/srv/development/wp-content/themes/project",
+    "/home/vagrant/project/assets#/srv/development/assets"
+  ],
+  "plugins": [
+    "wordpress-seo",
+    "wp-markdown",
+    "wp-pagenavi"
+  ],
+  "production_url": "http://production-site.com"
 }
 ```
 
-[1]: http://vagrantup.com
+## License
+
+Apache2
