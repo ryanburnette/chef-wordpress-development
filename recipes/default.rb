@@ -87,6 +87,13 @@ bash "enable nginx site" do
   user "root"
 end
 
+bash "disable sendfile" do
+  code <<-EOF
+    sed -i 's/sendfile on/senfile off/g' /etc/nginx/nginx.conf
+  EOF
+  user root
+end
+
 service "nginx" do
   action :restart
 end
