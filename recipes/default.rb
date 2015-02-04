@@ -1,6 +1,6 @@
-plugins = data_bag_item("chef-wordpress-development", "default")["plugins"]
-symlinks = data_bag_item("chef-wordpress-development", "default")["symlinks"]
-production_url = data_bag_item("chef-wordpress-development", "default")["production_url"]
+plugins = data_bag_item("wordpress-development", "default")["plugins"]
+symlinks = data_bag_item("wordpress-development", "default")["symlinks"]
+production_url = data_bag_item("wordpress-development", "default")["production_url"]
 
 bash "create mysql user and database" do
   code <<-EOF
@@ -92,7 +92,7 @@ bash "disable sendfile" do
   code <<-EOF
     sed -i 's/sendfile on/senfile off/g' /etc/nginx/nginx.conf
   EOF
-  user root
+  user "root"
 end
 
 service "nginx" do
