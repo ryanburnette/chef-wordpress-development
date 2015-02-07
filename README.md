@@ -1,8 +1,8 @@
-# wordpress-development
+# chef-wordpress-development
 
-This is my cookbook for provisioning a Vagrant instance for developing in
-WordPress. It handles tasks that match my particular development pattern, but
-with a few tweaks it might handle yours too. Feel free to fork and use it as a
+This is my cookbook for provisioning a Vagrant instance as a WordPress development
+environemnt. It handles tasks that suit my development pattern, but
+with a few tweaks it might suit yours too. Feel free to fork and use it as a
 basis for your own WordPress development.
 
 The goal is to be able to run `vagrant up` in the root of a WordPress project
