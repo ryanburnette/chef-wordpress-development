@@ -90,7 +90,7 @@ end
 
 bash "disable sendfile" do
   code <<-EOF
-    sed -i 's/sendfile on/senfile off/g' /etc/nginx/nginx.conf
+    sed -i 's/sendfile on/sendfile off/g' /etc/nginx/nginx.conf
   EOF
   user "root"
 end
